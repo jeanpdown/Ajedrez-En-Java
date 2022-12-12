@@ -13,30 +13,19 @@ public class Torre extends Ficha{
     @Override
     public void movimientosPosibles(ArrayList<String> posicionesPosibles,Ficha fichas[][],int YultimoMov,int XultimoMov){
         //  →→→→→→
-        for(int i=1;i<8;i++){
-            movimientoFichaSegunVariacion(posicionesPosibles,fichas,0,i);
-            if(comprobarRangoIndice(getPosY(),getPosX()+i) && fichas[getPosY()][getPosX()+i]!=null){
-                break;
-            }
-        }
+        movimientoRecto(posicionesPosibles,fichas,0,1);
         //  ←←←←←←
-        for(int i=-1;i>-8;i--){
-            movimientoFichaSegunVariacion(posicionesPosibles,fichas,0,i);
-            if(comprobarRangoIndice(getPosY(),getPosX()+i) && fichas[getPosY()][getPosX()+i]!=null){
-                break;
-            }
-        }
+        movimientoRecto(posicionesPosibles,fichas,0,-1);
         //  ↑↑↑↑↑↑
-        for(int i=1;i<8;i++){
-            movimientoFichaSegunVariacion(posicionesPosibles,fichas,i,0);
-            if(comprobarRangoIndice(getPosY()+i,getPosX()) && fichas[getPosY()+i][getPosX()]!=null){
-                break;
-            }
-        }
+        movimientoRecto(posicionesPosibles,fichas,1,0);
         //  ↓↓↓↓↓↓
-        for(int i=-1;i>-8;i--){
-            movimientoFichaSegunVariacion(posicionesPosibles,fichas,i,0);
-            if(comprobarRangoIndice(getPosY()+i,getPosX()) && fichas[getPosY()+i][getPosX()]!=null){
+        movimientoRecto(posicionesPosibles,fichas,-1,0);
+    }
+
+    public void movimientoRecto(ArrayList<String> posicionesPosibles,Ficha fichas[][],int variacionY,int variacionX){
+        for(int i=1;i<8;i++){
+            movimientoFichaSegunVariacion(posicionesPosibles,fichas,i*variacionY,i*variacionX);
+            if(comprobarRangoIndice(getPosY()+i*variacionY,getPosX()+i*variacionX) && fichas[getPosY()+i*variacionY][getPosX()+i*variacionX]!=null){
                 break;
             }
         }
