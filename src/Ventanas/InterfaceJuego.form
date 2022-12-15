@@ -355,7 +355,7 @@
                           </Group>
                       </Group>
                   </Group>
-                </DimensionLayout>
+                </DimensionLayout><!--hola soy jhamil-->
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JButton" name="H1">
