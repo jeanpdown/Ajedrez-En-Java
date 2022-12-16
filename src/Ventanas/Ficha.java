@@ -26,7 +26,7 @@ public class Ficha {
     public void movimientosPosibles(ArrayList<String> posiciones,Ficha fichas[][],int YultimoMov,int XultimoMov){
         System.out.println("Ficha");
     }
-    public void movimientoFichaSegunVariacion(ArrayList<String> posicionesPosibles,Ficha fichas[][],int variacionY,int variacionX){
+    public boolean movimientoFichaSegunVariacion(ArrayList<String> posicionesPosibles,Ficha fichas[][],int variacionY,int variacionX){
         
         if(comprobarRangoIndice(getPosY()+variacionY,getPosX()+variacionX)){
             if(fichas[getPosY()+variacionY][getPosX()+variacionX]==null) {
