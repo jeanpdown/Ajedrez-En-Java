@@ -33,16 +33,14 @@ public class Reina extends Ficha{
     public void movimientoDiagonal(ArrayList<String> posicionesPosibles,Ficha fichas[][],int variacionY,int variacionX){
         
         for(int i=1;i<8;i++){
-            movimientoFichaSegunVariacion(posicionesPosibles,fichas,i*variacionY,i*variacionX);
-            if(comprobarRangoIndice(getPosY()+i*variacionY,getPosX()+i*variacionX) && fichas[getPosY()+i*variacionY][getPosX()+i*variacionX]!=null){
+            if(!movimientoFichaSegunVariacion(posicionesPosibles,fichas,i*variacionY,i*variacionX)){
                 break;
             }
         }
     }
     public void movimientoRecto(ArrayList<String> posicionesPosibles,Ficha fichas[][],int variacionY,int variacionX){
         for(int i=1;i<8;i++){
-            movimientoFichaSegunVariacion(posicionesPosibles,fichas,i*variacionY,i*variacionX);
-            if(comprobarRangoIndice(getPosY()+i*variacionY,getPosX()+i*variacionX) && fichas[getPosY()+i*variacionY][getPosX()+i*variacionX]!=null){
+            if(!movimientoFichaSegunVariacion(posicionesPosibles,fichas,i*variacionY,i*variacionX)){
                 break;
             }
         }
