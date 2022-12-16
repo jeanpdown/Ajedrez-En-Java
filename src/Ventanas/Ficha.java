@@ -29,13 +29,21 @@ public class Ficha {
     public void movimientoFichaSegunVariacion(ArrayList<String> posicionesPosibles,Ficha fichas[][],int variacionY,int variacionX){
         
         if(comprobarRangoIndice(getPosY()+variacionY,getPosX()+variacionX)){
-            if(fichas[getPosY()+variacionY][getPosX()+variacionX]==null)
-                posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
-            else if(!fichas[getPosY()+variacionY][getPosX()+variacionX].getColor().equals(this.getColor()))
-                posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+            if(fichas[getPosY()+variacionY][getPosX()+variacionX]==null) {
+                    posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+            } else if(!fichas[getPosY()+variacionY][getPosX()+variacionX].getColor().equals(this.getColor())) {
+                    posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+                    return false;
+            } else {
+                    return false;
+            }
+        }else{
+            return false;
         }
+        return true;
         
     }
+    
     public String getColor() {
         return color;
     }
