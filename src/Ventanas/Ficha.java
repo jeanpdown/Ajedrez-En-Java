@@ -13,6 +13,7 @@ public class Ficha {
     private int posX;
     private boolean vive=true;
     private int movimientosRealizados=0;
+    public static boolean ataque=false;
 
     public Ficha(String color, String direccionImagen, JButton boton) {
         this.color = color;
@@ -32,7 +33,7 @@ public class Ficha {
             if(fichas[getPosY()+variacionY][getPosX()+variacionX]==null) {
                     posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
             } else if(!fichas[getPosY()+variacionY][getPosX()+variacionX].getColor().equals(this.getColor())) {
-                    posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+                    probarJaque(posicionesPosibles, fichas, variacionY, variacionX);
                     return false;
             } else {
                     return false;
@@ -42,6 +43,15 @@ public class Ficha {
         }
         return true;
         
+    }
+    
+    public void probarJaque(ArrayList<String> posicionesPosibles,Ficha fichas[][],int variacionY,int variacionX){
+            if(fichas[getPosY()+variacionY][getPosX()+variacionX] instanceof Rey){//probar que el rey esté en jaque
+                    Ficha.ataque=true;
+                    posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+            }else{
+                    posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+            }
     }
     
     public String getColor() {
