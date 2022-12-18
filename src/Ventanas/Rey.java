@@ -36,5 +36,157 @@ public class Rey extends Ficha{
             }
             
     }
- 
+    public boolean enJaque(Ficha fichas[][]){
+            //busca torre o dama
+            if(defenzaTotalRecta(fichas, 1, 0)) {
+                    return Ficha.ataque;
+            }
+            if(defenzaTotalRecta(fichas, 0, 1)) {
+                    return Ficha.ataque;
+            }
+            if(defenzaTotalRecta(fichas, 0, -1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaTotalRecta(fichas, -1, 0)){
+                    return Ficha.ataque;
+            }
+            //busca alfil o dama
+            if(defenzaTotalDiagonal(fichas, 1, 1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaTotalDiagonal(fichas, 1, -1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaTotalDiagonal(fichas, -1, 1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaTotalDiagonal(fichas, -1, -1)){
+                    return Ficha.ataque;
+            }
+            //busca caballo
+            if(defenzaCaballo(fichas, -1,2)){
+                    return Ficha.ataque;
+            }
+            if(defenzaCaballo(fichas, -1,-2)){
+                    return Ficha.ataque;
+            }
+            if(defenzaCaballo(fichas, -2,1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaCaballo(fichas, -2,-1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaCaballo(fichas, 1,2)){
+                    return Ficha.ataque;
+            }
+            if(defenzaCaballo(fichas, 1,-2)){
+                    return Ficha.ataque;
+            }
+            if(defenzaCaballo(fichas, 2,1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaCaballo(fichas, 2,-1)){
+                    return Ficha.ataque;
+            }
+            //busca peon
+            if(defenzaPeon(fichas, 1,1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaPeon(fichas, 1,-1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaPeon(fichas, -1,1)){
+                    return Ficha.ataque;
+            }
+            if(defenzaPeon(fichas, -1,-1)){
+                    return Ficha.ataque;
+            }
+            return Ficha.ataque;
+    }
+    public boolean defenzaTotalRecta(Ficha fichas[][],int variacionY,int variacionX){
+            for(int i = 0; i < 8; i++){
+                    if(defenzaRecta(fichas,i*variacionY,i*variacionX)){
+                            break;
+                    }
+            }
+            return Ficha.ataque;
+    }
+    public boolean defenzaTotalDiagonal(Ficha fichas[][],int variacionY,int variacionX){
+            for(int i = 0; i < 8; i++){
+                    if(defenzaDiagonal(fichas,i*variacionY,i*variacionX)){
+                            break;
+                    }
+            }
+            return Ficha.ataque;
+    }
+    public boolean defenzaRecta(Ficha fichas[][],int posY, int posX){
+            if(comprobarRangoIndice(getPosY()+posY,getPosX()+posX)){
+                    Ficha buscar = fichas[getPosY()+posY][getPosX()+posX];
+                    if(buscar!=null) {
+                            if(!buscar.getColor().equals(this.getColor())){
+                                    if(buscar instanceof Torre || buscar instanceof Reina){
+                                            Ficha.ataque = true;
+                                            return true;
+                                    }else{
+                                            Ficha.ataque = false;
+                                    }
+                            }else{
+                                    return true;
+                            }
+                    }
+            }else{
+                    return true;
+            }
+            return false;
+    }
+    public boolean defenzaDiagonal(Ficha fichas[][],int posY, int posX){
+            if(comprobarRangoIndice(getPosY()+posY,getPosX()+posX)){
+                    Ficha buscar = fichas[getPosY()+posY][getPosX()+posX];
+                    if(buscar!=null) {
+                            if(!buscar.getColor().equals(this.getColor())){
+                                    if(buscar instanceof Alfil || buscar instanceof Reina){
+                                            Ficha.ataque = true;
+                                            return true;
+                                    }else{
+                                            Ficha.ataque = false;
+                                    }
+                            }else{
+                                    return true;
+                            }
+                    }
+            }else{
+                    return true;
+            }
+            return false;
+    }
+    public boolean defenzaCaballo(Ficha fichas[][],int posY, int posX){
+            if(comprobarRangoIndice(getPosY()+posY,getPosX()+posX)){
+                    Ficha buscar = fichas[getPosY()+posY][getPosX()+posX];
+                    if(buscar!=null) {
+                            if(!buscar.getColor().equals(this.getColor())){
+                                    if(buscar instanceof Caballo){
+                                            Ficha.ataque = true;
+                                    }else{
+                                            Ficha.ataque = false;
+                                    }
+                            }
+                    }
+            }
+            return Ficha.ataque;
+    }
+    public boolean defenzaPeon(Ficha fichas[][],int posY, int posX){
+            if(comprobarRangoIndice(getPosY()+posY,getPosX()+posX)){
+                    Ficha buscar = fichas[getPosY()+posY][getPosX()+posX];
+                    if(buscar!=null) {
+                            if(!buscar.getColor().equals(this.getColor())){
+                                    if(buscar instanceof Peon){
+                                            Ficha.ataque = true;
+                                    }else{
+                                            Ficha.ataque = false;
+                                    }
+                            }
+                    }
+            }
+            return Ficha.ataque;
+    }
 }
