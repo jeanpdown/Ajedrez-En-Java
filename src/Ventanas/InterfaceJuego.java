@@ -23,7 +23,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
     private Rey[] reyes=new Rey[2];
     private int turnoJugador=1;
     private String colorTurnoJugador="blanco";
-    private FondoPanel fondo=new FondoPanel();
+    private FondoPanel fondo=new FondoPanel("/imagenes/fondo1.jpg");
     private boolean reemplazarPeon=false;
     private int XultimoMovido;
     private int YultimoMovido;
@@ -117,36 +117,22 @@ public class InterfaceJuego extends javax.swing.JFrame {
         A4 = new javax.swing.JButton();
         A2 = new javax.swing.JButton();
         A3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        txtTurno = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ganadortxt = new javax.swing.JTextArea();
-        jaketxt = new javax.swing.JLabel();
-        btnVolverAJugar = new javax.swing.JButton();
         escogerFicha = new javax.swing.JPanel();
         opciones = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnVolverAJugar = new javax.swing.JButton();
+        jaketxt1 = new javax.swing.JLabel();
+        ganadortxt = new javax.swing.JLabel();
+        player1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel6 = new FondoPanel("/imagenes/persona.png");
+        player2 = new javax.swing.JPanel();
+        jPanel8 = new FondoPanel("/imagenes/persona.png");
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(880, 710));
+        setMinimumSize(new java.awt.Dimension(1180, 880));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(146, 81, 37));
@@ -279,6 +265,11 @@ public class InterfaceJuego extends javax.swing.JFrame {
         G3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 G3MouseClicked(evt);
+            }
+        });
+        G3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                G3ActionPerformed(evt);
             }
         });
 
@@ -928,145 +919,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 32, 540, 540));
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel1.setText("A");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, 24));
-
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel2.setText("B");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, 24));
-
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel4.setText("C");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, 24));
-
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel5.setText("1");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 24));
-
-        jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel6.setText("2");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 24));
-
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel7.setText("3");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, 24));
-
-        jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel8.setText("4");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, 24));
-
-        jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel9.setText("5");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, 24));
-
-        jLabel10.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel10.setText("6");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, 24));
-
-        jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel11.setText("7");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, 24));
-
-        jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel12.setText("8");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, 24));
-
-        jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel13.setText("D");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, 24));
-
-        jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel14.setText("E");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 24));
-
-        jLabel15.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel15.setText("F");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 24));
-
-        jLabel16.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel16.setText("G");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 24));
-
-        jLabel17.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel17.setText("H");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 24));
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 620, 605));
-
-        jPanel4.setBackground(new java.awt.Color(123, 123, 123));
-
-        jLabel18.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(11, 19, 125));
-        jLabel18.setText("TURNO DE:");
-
-        txtTurno.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
-        txtTurno.setForeground(new java.awt.Color(225, 225, 225));
-        txtTurno.setText("BLANCAS");
-
-        ganadortxt.setBackground(new java.awt.Color(123, 123, 123));
-        ganadortxt.setColumns(1);
-        ganadortxt.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
-        ganadortxt.setForeground(new java.awt.Color(0, 204, 204));
-        ganadortxt.setRows(1);
-        ganadortxt.setAutoscrolls(false);
-        ganadortxt.setBorder(null);
-        ganadortxt.setName(""); // NOI18N
-        jScrollPane1.setViewportView(ganadortxt);
-
-        jaketxt.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
-        jaketxt.setForeground(new java.awt.Color(11, 19, 125));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel18))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTurno)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jaketxt)))
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTurno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jaketxt)
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 180, 260));
-
-        btnVolverAJugar.setBackground(new java.awt.Color(123, 123, 123));
-        btnVolverAJugar.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        btnVolverAJugar.setForeground(new java.awt.Color(225, 225, 225));
-        btnVolverAJugar.setText("Volver a jugar");
-        btnVolverAJugar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVolverAJugarMouseClicked(evt);
-            }
-        });
-        btnVolverAJugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverAJugarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnVolverAJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 550, -1, 40));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 620, 605));
 
         escogerFicha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1092,9 +945,111 @@ public class InterfaceJuego extends javax.swing.JFrame {
         escogerFicha.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel3.setText("Seleccionar Ficha");
-        escogerFicha.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 6, -1, -1));
+        escogerFicha.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
-        getContentPane().add(escogerFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 140, 120));
+        getContentPane().add(escogerFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 140, 120));
+
+        btnVolverAJugar.setBackground(new java.awt.Color(123, 123, 123));
+        btnVolverAJugar.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        btnVolverAJugar.setForeground(new java.awt.Color(225, 225, 225));
+        btnVolverAJugar.setText("Volver a jugar");
+        btnVolverAJugar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverAJugarMouseClicked(evt);
+            }
+        });
+        btnVolverAJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverAJugarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVolverAJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 680, -1, 40));
+
+        jaketxt1.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
+        jaketxt1.setForeground(new java.awt.Color(11, 19, 125));
+        getContentPane().add(jaketxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 370, 78, 26));
+
+        ganadortxt.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
+        ganadortxt.setForeground(new java.awt.Color(11, 19, 125));
+        getContentPane().add(ganadortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 450, 78, 26));
+
+        player1.setBackground(new java.awt.Color(0, 179, 0));
+
+        jLabel1.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        jLabel1.setText("PLAYER1");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout player1Layout = new javax.swing.GroupLayout(player1);
+        player1.setLayout(player1Layout);
+        player1Layout.setHorizontalGroup(
+            player1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(player1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        player1Layout.setVerticalGroup(
+            player1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, player1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+
+        getContentPane().add(player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, 210, 180));
+
+        player2.setBackground(new java.awt.Color(123, 123, 123));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jLabel2.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        jLabel2.setText("PLAYER2");
+
+        javax.swing.GroupLayout player2Layout = new javax.swing.GroupLayout(player2);
+        player2.setLayout(player2Layout);
+        player2Layout.setHorizontalGroup(
+            player2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player2Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(player2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        player2Layout.setVerticalGroup(
+            player2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
+
+        getContentPane().add(player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 180));
 
         pack();
     }// </editor-fold>                        
@@ -1475,6 +1430,10 @@ public class InterfaceJuego extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                  
 
+    private void G3ActionPerformed(java.awt.event.ActionEvent evt) {                                   
+        // TODO add your handling code here:
+    }                                  
+
     private void vaciarTableroBotones(){
         
         for(int i=0;i<casillerosBotones.length;i++){
@@ -1550,10 +1509,12 @@ public class InterfaceJuego extends javax.swing.JFrame {
                 atributosMover(yanterior,5,yanterior,7);
             }   
         }
+
         //movimiento especial peon
         if(casillerosFichas[yanterior][xanterior] instanceof Peon){
             if(xanterior!=xnuevo && yanterior!=ynuevo && casillerosFichas[ynuevo][xnuevo]==null){
                 eliminarFicha(yanterior,xnuevo);
+                System.out.println("movimiento especial peon");
             }   
         }
         atributosMover(ynuevo,xnuevo,yanterior,xanterior);
@@ -1587,7 +1548,6 @@ public class InterfaceJuego extends javax.swing.JFrame {
         casillerosFichas[ynuevo][xnuevo]=estaFicha;
         casillerosFichas[yanterior][xanterior]=null;
         
-        
     }
     
     private void casilleroClickeado(JButton bt){
@@ -1608,13 +1568,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         }else if (movimiento.size() == 1 && comprobarVidaReyes() && reemplazarPeon==false) {
             movimiento.add(bt);
             
-            mostrarCasillerosAtacados();
-            if(casillerosFichas[y][x] instanceof Peon){
-                if(y==0 || y==7){
-                    escogerFicha.setVisible(true);    
-                    reemplazarPeon=true;
-                }
-            }
+            
             if (comprobarMovimientoValido(y, x) && !comprobarSiHayJakeDespuesDeMover(y,x,colorTurnoJugador)) {
                 moverPieza();
                 
@@ -1627,11 +1581,18 @@ public class InterfaceJuego extends javax.swing.JFrame {
                 fichaClickeada.movimientosPosibles(posicionesPosibles, casillerosFichas,YultimoMovido,XultimoMovido);
                 //
             }
+            System.out.println("y es : "+y);
+            if(casillerosFichas[y][x] instanceof Peon){
+                if(y==0 || y==7){
+                    escogerFicha.setVisible(true);    
+                    reemplazarPeon=true;
+                }
+            }
             if(comprobarsiHayJake("blanco") || comprobarsiHayJake("negro")){
-                jaketxt.setText("JAKE");
+                ganadortxt.setText("JAKE");
                 jake=true;
             }else{
-                jaketxt.setText("");
+                ganadortxt.setText("");
                 jake=false;
             }
             movimiento.clear();
@@ -1644,12 +1605,6 @@ public class InterfaceJuego extends javax.swing.JFrame {
                 btnVolverAJugar.setVisible(true);
         }
     }  
-    public void mostrarCasillerosAtacados(){
-            System.out.println("casillerosAtacados");
-            for(int j=0;j<casillerosAtacados.size();j++){
-                System.out.println(casillerosAtacados.get(j));
-            }
-    }
     public boolean comprobarSiHayJakeDespuesDeMover(int y,int x,String colorAtacado){
         int xanterior=(int)(movimiento.get(0).getAlignmentX()*10);
         int yanterior=(int)(movimiento.get(0).getAlignmentY()*10);
@@ -1690,6 +1645,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
             String movimiento=reyes[i].getPosY()+" "+reyes[i].getPosX();
             for(int j=0;j<casillerosAtacados.size();j++){
                 if(casillerosAtacados.get(j).equals(movimiento)){
+                    System.out.println("");
                     return true;
                 }    
             }
@@ -1726,14 +1682,14 @@ public class InterfaceJuego extends javax.swing.JFrame {
     public void cambiarTurnoJugador(){
         
         if(turnoJugador==1){
-            txtTurno.setText("NEGRAS");
-            txtTurno.setForeground(Color.BLACK);
+            player1.setBackground(new Color(123,123,123));
+            player2.setBackground(new Color(0,179,0));
             colorTurnoJugador="negro";
             turnoJugador=2;
             
         }else{
-            txtTurno.setText("BLANCAS");
-            txtTurno.setForeground(Color.WHITE);
+            player1.setBackground(new Color(0,179,0));
+            player2.setBackground(new Color(123,123,123));
             turnoJugador=1;
             colorTurnoJugador="blanco";
         }
@@ -1988,33 +1944,19 @@ public class InterfaceJuego extends javax.swing.JFrame {
     private javax.swing.JButton H8;
     private javax.swing.JButton btnVolverAJugar;
     private javax.swing.JPanel escogerFicha;
-    private javax.swing.JTextArea ganadortxt;
+    private javax.swing.JLabel ganadortxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel jaketxt;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JLabel jaketxt1;
     private javax.swing.JComboBox<String> opciones;
-    private javax.swing.JLabel txtTurno;
+    private javax.swing.JPanel player1;
+    private javax.swing.JPanel player2;
     // End of variables declaration                   
 }
