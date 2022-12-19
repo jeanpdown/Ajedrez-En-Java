@@ -23,7 +23,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
     private Rey[] reyes=new Rey[2];
     private int turnoJugador=1;
     private String colorTurnoJugador="blanco";
-    private FondoPanel fondo=new FondoPanel("/imagenes/fondo1.jpg");
+    private FondoPanel fondo=new FondoPanel("/imagenes/fondo4.jpg");
     private boolean reemplazarPeon=false;
     private int XultimoMovido;
     private int YultimoMovido;
