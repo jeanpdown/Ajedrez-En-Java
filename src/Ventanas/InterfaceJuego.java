@@ -39,6 +39,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         ponerFichasEnBotones();
         btnVolverAJugar.setVisible(false);
         escogerFicha.setVisible(false);
+        contenedorJake.setVisible(false);
     }   
 
     /**
@@ -122,7 +123,6 @@ public class InterfaceJuego extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnVolverAJugar = new javax.swing.JButton();
-        jaketxt1 = new javax.swing.JLabel();
         ganadortxt = new javax.swing.JLabel();
         player1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -130,6 +130,8 @@ public class InterfaceJuego extends javax.swing.JFrame {
         player2 = new javax.swing.JPanel();
         jPanel8 = new FondoPanel("/imagenes/persona.png");
         jLabel2 = new javax.swing.JLabel();
+        contenedorJake = new javax.swing.JPanel();
+        jaketxt1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1180, 880));
@@ -947,7 +949,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         jLabel3.setText("Seleccionar Ficha");
         escogerFicha.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
-        getContentPane().add(escogerFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 140, 120));
+        getContentPane().add(escogerFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 160, 140, 120));
 
         btnVolverAJugar.setBackground(new java.awt.Color(123, 123, 123));
         btnVolverAJugar.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
@@ -965,12 +967,9 @@ public class InterfaceJuego extends javax.swing.JFrame {
         });
         getContentPane().add(btnVolverAJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 680, -1, 40));
 
-        jaketxt1.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
-        jaketxt1.setForeground(new java.awt.Color(11, 19, 125));
-        getContentPane().add(jaketxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 370, 78, 26));
-
         ganadortxt.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
         ganadortxt.setForeground(new java.awt.Color(11, 19, 125));
+        ganadortxt.setText("gan");
         getContentPane().add(ganadortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 450, 78, 26));
 
         player1.setBackground(new java.awt.Color(0, 179, 0));
@@ -1050,6 +1049,31 @@ public class InterfaceJuego extends javax.swing.JFrame {
         );
 
         getContentPane().add(player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 180));
+
+        contenedorJake.setBackground(new java.awt.Color(123, 123, 123));
+
+        jaketxt1.setFont(new java.awt.Font("Wide Latin", 1, 30)); // NOI18N
+        jaketxt1.setForeground(new java.awt.Color(230, 230, 0));
+        jaketxt1.setText("JAKE");
+
+        javax.swing.GroupLayout contenedorJakeLayout = new javax.swing.GroupLayout(contenedorJake);
+        contenedorJake.setLayout(contenedorJakeLayout);
+        contenedorJakeLayout.setHorizontalGroup(
+            contenedorJakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorJakeLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jaketxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        contenedorJakeLayout.setVerticalGroup(
+            contenedorJakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorJakeLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jaketxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+
+        getContentPane().add(contenedorJake, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 210, -1));
 
         pack();
     }// </editor-fold>                        
@@ -1589,10 +1613,10 @@ public class InterfaceJuego extends javax.swing.JFrame {
                 }
             }
             if(comprobarsiHayJake("blanco") || comprobarsiHayJake("negro")){
-                ganadortxt.setText("JAKE");
+                contenedorJake.setVisible(true);
                 jake=true;
             }else{
-                ganadortxt.setText("");
+                contenedorJake.setVisible(false);
                 jake=false;
             }
             movimiento.clear();
@@ -1943,6 +1967,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
     private javax.swing.JButton H7;
     private javax.swing.JButton H8;
     private javax.swing.JButton btnVolverAJugar;
+    private javax.swing.JPanel contenedorJake;
     private javax.swing.JPanel escogerFicha;
     private javax.swing.JLabel ganadortxt;
     private javax.swing.JButton jButton1;
