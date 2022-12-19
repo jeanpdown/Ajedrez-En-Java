@@ -1653,15 +1653,32 @@ public class InterfaceJuego extends javax.swing.JFrame {
     public boolean comprobarSiHayJakeDespuesDeMover(int y,int x,String colorAtacado){
         int xanterior=(int)(movimiento.get(0).getAlignmentX()*10);
         int yanterior=(int)(movimiento.get(0).getAlignmentY()*10);
-        
+        boolean valor;
         Ficha fichaMoviendo=casillerosFichas[yanterior][xanterior];
+        Ficha fichaComida;
+        
+        if(fichaMoviendo instanceof Rey){
+            fichaMoviendo.setPosX(x);
+            fichaMoviendo.setPosY(y);
+        }
         casillerosFichas[yanterior][xanterior]=null;
         
-        casillerosFichas[y][x]=new Ficha(colorAtacado);//elemento de prueba
-        boolean valor;
+        if(casillerosFichas[y][x]==null){
+            casillerosFichas[y][x]=fichaMoviendo;
+            valor=comprobarsiHayJake(colorAtacado); 
+            casillerosFichas[y][x]=null;
+        }else{
+            fichaComida=casillerosFichas[y][x];
+            casillerosFichas[y][x]=fichaMoviendo;
+            valor=comprobarsiHayJake(colorAtacado); 
+            casillerosFichas[y][x]=fichaComida;
+        }
         
-        valor=comprobarsiHayJake(colorAtacado); 
-        casillerosFichas[y][x]=null;
+        if(fichaMoviendo instanceof Rey){
+            fichaMoviendo.setPosX(xanterior);
+            fichaMoviendo.setPosY(yanterior);
+        }
+        
         casillerosFichas[yanterior][xanterior]=fichaMoviendo;
         return valor;
     }
