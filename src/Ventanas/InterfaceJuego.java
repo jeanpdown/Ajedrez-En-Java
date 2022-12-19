@@ -37,7 +37,6 @@ public class InterfaceJuego extends javax.swing.JFrame {
         darCoordenadasBotones();
         ponerFichasEnTableroFichas();
         ponerFichasEnBotones();
-        btnVolverAJugar.setVisible(false);
         escogerFicha.setVisible(false);
         contenedorJake.setVisible(false);
     }   
@@ -51,6 +50,10 @@ public class InterfaceJuego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
+        escogerFicha = new javax.swing.JPanel();
+        opciones = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -118,10 +121,6 @@ public class InterfaceJuego extends javax.swing.JFrame {
         A4 = new javax.swing.JButton();
         A2 = new javax.swing.JButton();
         A3 = new javax.swing.JButton();
-        escogerFicha = new javax.swing.JPanel();
-        opciones = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         btnVolverAJugar = new javax.swing.JButton();
         ganadortxt = new javax.swing.JLabel();
         player1 = new javax.swing.JPanel();
@@ -136,6 +135,35 @@ public class InterfaceJuego extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1180, 880));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        escogerFicha.setBackground(new java.awt.Color(225, 225, 225));
+        escogerFicha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reina", "Caballo", "Torre", "Alfil" }));
+        opciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcionesActionPerformed(evt);
+            }
+        });
+        escogerFicha.add(opciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 35, -1, -1));
+
+        jButton1.setText("Confirmar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        escogerFicha.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        jLabel3.setText("Seleccionar Ficha");
+        escogerFicha.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
+
+        getContentPane().add(escogerFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 170, 140, 120));
 
         jPanel3.setBackground(new java.awt.Color(146, 81, 37));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -923,34 +951,6 @@ public class InterfaceJuego extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 620, 605));
 
-        escogerFicha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reina", "Caballo", "Torre", "Alfil" }));
-        opciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcionesActionPerformed(evt);
-            }
-        });
-        escogerFicha.add(opciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 35, -1, -1));
-
-        jButton1.setText("Confirmar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        escogerFicha.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-
-        jLabel3.setText("Seleccionar Ficha");
-        escogerFicha.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
-
-        getContentPane().add(escogerFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 160, 140, 120));
-
         btnVolverAJugar.setBackground(new java.awt.Color(123, 123, 123));
         btnVolverAJugar.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         btnVolverAJugar.setForeground(new java.awt.Color(225, 225, 225));
@@ -1061,16 +1061,16 @@ public class InterfaceJuego extends javax.swing.JFrame {
         contenedorJakeLayout.setHorizontalGroup(
             contenedorJakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorJakeLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(20, 20, 20)
                 .addComponent(jaketxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         contenedorJakeLayout.setVerticalGroup(
             contenedorJakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorJakeLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jaketxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(20, 20, 20))
         );
 
         getContentPane().add(contenedorJake, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 210, -1));
@@ -1414,7 +1414,8 @@ public class InterfaceJuego extends javax.swing.JFrame {
         vaciarTableroFichas();
         ponerFichasEnTableroFichas();
         ponerFichasEnBotones();
-        btnVolverAJugar.setVisible(false);
+        player2.setBackground(new Color(123,123,123));
+        player1.setBackground(new Color(0,179,0));
     }                                            
 
     private void opcionesActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -1445,7 +1446,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         
         casillerosFichas[YultimoMovido][XultimoMovido].setMovimientosRealizados(1);
         colocarPieza(casillerosFichas[YultimoMovido][XultimoMovido]);
-        
+        comprobarSiHayJakeDosColores();
         reemplazarPeon=false;
         escogerFicha.setVisible(false);
     }                                     
@@ -1612,13 +1613,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
                     reemplazarPeon=true;
                 }
             }
-            if(comprobarsiHayJake("blanco") || comprobarsiHayJake("negro")){
-                contenedorJake.setVisible(true);
-                jake=true;
-            }else{
-                contenedorJake.setVisible(false);
-                jake=false;
-            }
+            comprobarSiHayJakeDosColores();
             movimiento.clear();
             posicionesPosibles.clear();
             pintarBackgroundTablero();
@@ -1661,7 +1656,16 @@ public class InterfaceJuego extends javax.swing.JFrame {
         casillerosFichas[yanterior][xanterior]=fichaMoviendo;
         return valor;
     }
-    
+    public void comprobarSiHayJakeDosColores(){
+        if(comprobarsiHayJake("blanco") || comprobarsiHayJake("negro")){
+                contenedorJake.setVisible(true);
+                jake=true;
+        }else{
+                contenedorJake.setVisible(false);
+                jake=false;
+        }
+        
+    }
     public boolean comprobarsiHayJake(String colorAtacado){
         llenarCasillerosAtacados(colorAtacado);
         
