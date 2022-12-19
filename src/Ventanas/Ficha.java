@@ -22,7 +22,9 @@ public class Ficha {
         this.posX=(int)(boton.getAlignmentX()*10);
         this.posY=(int)(boton.getAlignmentY()*10);
     }
-
+    public Ficha(String color) {
+        this.color = color;
+    }
 
     public void movimientosPosibles(ArrayList<String> posiciones,Ficha fichas[][],int YultimoMov,int XultimoMov){
         System.out.println("Ficha");
