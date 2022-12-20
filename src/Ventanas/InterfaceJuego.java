@@ -39,6 +39,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         ponerFichasEnBotones();
         escogerFicha.setVisible(false);
         contenedorJake.setVisible(false);
+        ganadortxt.setVisible(false);
     }   
 
     /**
@@ -124,19 +125,20 @@ public class InterfaceJuego extends javax.swing.JFrame {
         btnVolverAJugar = new javax.swing.JButton();
         ganadortxt = new javax.swing.JLabel();
         player1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel5 = new FondoPanel("/imagenes/fondo3.jpg");
         jPanel6 = new FondoPanel("/imagenes/persona.png");
+        jLabel1 = new javax.swing.JLabel();
         player2 = new javax.swing.JPanel();
+        jPanel4 = new FondoPanel("/imagenes/fondo3.jpg");
         jPanel8 = new FondoPanel("/imagenes/persona.png");
         jLabel2 = new javax.swing.JLabel();
-        contenedorJake = new javax.swing.JPanel();
-        jaketxt1 = new javax.swing.JLabel();
+        contenedorJake = new FondoPanel("/imagenes/jake.jpg");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1180, 880));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        escogerFicha.setBackground(new java.awt.Color(225, 225, 225));
+        escogerFicha.setBackground(new java.awt.Color(123, 123, 123));
         escogerFicha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reina", "Caballo", "Torre", "Alfil" }));
@@ -160,10 +162,11 @@ public class InterfaceJuego extends javax.swing.JFrame {
         });
         escogerFicha.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(250, 250, 250));
         jLabel3.setText("Seleccionar Ficha");
         escogerFicha.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
-        getContentPane().add(escogerFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 170, 140, 120));
+        getContentPane().add(escogerFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 130, 140, 120));
 
         jPanel3.setBackground(new java.awt.Color(146, 81, 37));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -974,9 +977,6 @@ public class InterfaceJuego extends javax.swing.JFrame {
 
         player1.setBackground(new java.awt.Color(0, 179, 0));
 
-        jLabel1.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
-        jLabel1.setText("PLAYER1");
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -988,28 +988,48 @@ public class InterfaceJuego extends javax.swing.JFrame {
             .addGap(0, 70, Short.MAX_VALUE)
         );
 
+        jLabel1.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
+        jLabel1.setText("PLAYER1");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout player1Layout = new javax.swing.GroupLayout(player1);
         player1.setLayout(player1Layout);
         player1Layout.setHorizontalGroup(
             player1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(player1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(player1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         player1Layout.setVerticalGroup(
             player1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, player1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+            .addGroup(player1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        getContentPane().add(player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, 210, 180));
+        getContentPane().add(player1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 230, 170));
 
         player2.setBackground(new java.awt.Color(123, 123, 123));
 
@@ -1027,50 +1047,57 @@ public class InterfaceJuego extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SimSun", 1, 24)); // NOI18N
         jLabel2.setText("PLAYER2");
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+        );
+
         javax.swing.GroupLayout player2Layout = new javax.swing.GroupLayout(player2);
         player2.setLayout(player2Layout);
         player2Layout.setHorizontalGroup(
             player2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(player2Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(player2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         player2Layout.setVerticalGroup(
             player2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(player2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(15, 15, 15)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        getContentPane().add(player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 210, 180));
+        getContentPane().add(player2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 230, 170));
 
         contenedorJake.setBackground(new java.awt.Color(123, 123, 123));
-
-        jaketxt1.setFont(new java.awt.Font("Wide Latin", 1, 30)); // NOI18N
-        jaketxt1.setForeground(new java.awt.Color(230, 230, 0));
-        jaketxt1.setText("JAKE");
 
         javax.swing.GroupLayout contenedorJakeLayout = new javax.swing.GroupLayout(contenedorJake);
         contenedorJake.setLayout(contenedorJakeLayout);
         contenedorJakeLayout.setHorizontalGroup(
             contenedorJakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedorJakeLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jaketxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+            .addGap(0, 210, Short.MAX_VALUE)
         );
         contenedorJakeLayout.setVerticalGroup(
             contenedorJakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorJakeLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jaketxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+            .addGap(0, 109, Short.MAX_VALUE)
         );
 
         getContentPane().add(contenedorJake, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 210, -1));
@@ -1409,13 +1436,13 @@ public class InterfaceJuego extends javax.swing.JFrame {
     private void btnVolverAJugarMouseClicked(java.awt.event.MouseEvent evt) {                                             
         turnoJugador=1;
         colorTurnoJugador="blanco";
-        ganadortxt.setText("");
         vaciarTableroBotones();
         vaciarTableroFichas();
         ponerFichasEnTableroFichas();
         ponerFichasEnBotones();
         player2.setBackground(new Color(123,123,123));
         player1.setBackground(new Color(0,179,0));
+        ganadortxt.setVisible(false);
     }                                            
 
     private void opcionesActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -1981,9 +2008,10 @@ public class InterfaceJuego extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JLabel jaketxt1;
     private javax.swing.JComboBox<String> opciones;
     private javax.swing.JPanel player1;
     private javax.swing.JPanel player2;
