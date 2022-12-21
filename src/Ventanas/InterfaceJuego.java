@@ -27,8 +27,9 @@ public class InterfaceJuego extends javax.swing.JFrame {
     private boolean reemplazarPeon=false;
     private int XultimoMovido;
     private int YultimoMovido;
-    private boolean jake=false;        
+    private boolean jakeMate=false;        
     private ArrayList<String> casillerosAtacados=new ArrayList<String>();
+    private ArrayList<String> movimientosSinJaque= new ArrayList<String>();
     
     public InterfaceJuego() {
         this.setContentPane(fondo);
@@ -40,6 +41,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         escogerFicha.setVisible(false);
         contenedorJake.setVisible(false);
         ganadortxt.setVisible(false);
+        jakeMatePanel.setVisible(false);
     }   
 
     /**
@@ -133,6 +135,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         jPanel8 = new FondoPanel("/imagenes/persona.png");
         jLabel2 = new javax.swing.JLabel();
         contenedorJake = new FondoPanel("/imagenes/jake.jpg");
+        jakeMatePanel = new FondoPanel("/imagenes/jakeMate.jpg");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1180, 880));
@@ -973,7 +976,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         ganadortxt.setFont(new java.awt.Font("SimSun-ExtB", 1, 24)); // NOI18N
         ganadortxt.setForeground(new java.awt.Color(11, 19, 125));
         ganadortxt.setText("gan");
-        getContentPane().add(ganadortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 450, 78, 26));
+        getContentPane().add(ganadortxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 540, 170, 26));
 
         player1.setBackground(new java.awt.Color(0, 179, 0));
 
@@ -1101,6 +1104,21 @@ public class InterfaceJuego extends javax.swing.JFrame {
         );
 
         getContentPane().add(contenedorJake, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 210, -1));
+
+        jakeMatePanel.setBackground(new java.awt.Color(123, 123, 123));
+
+        javax.swing.GroupLayout jakeMatePanelLayout = new javax.swing.GroupLayout(jakeMatePanel);
+        jakeMatePanel.setLayout(jakeMatePanelLayout);
+        jakeMatePanelLayout.setHorizontalGroup(
+            jakeMatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        jakeMatePanelLayout.setVerticalGroup(
+            jakeMatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jakeMatePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 160, 140));
 
         pack();
     }// </editor-fold>                        
@@ -1443,6 +1461,9 @@ public class InterfaceJuego extends javax.swing.JFrame {
         player2.setBackground(new Color(123,123,123));
         player1.setBackground(new Color(0,179,0));
         ganadortxt.setVisible(false);
+        jakeMate=false;
+        contenedorJake.setVisible(false);
+        jakeMatePanel.setVisible(false);
     }                                            
 
     private void opcionesActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -1566,7 +1587,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
         if(casillerosFichas[yanterior][xanterior] instanceof Peon){
             if(xanterior!=xnuevo && yanterior!=ynuevo && casillerosFichas[ynuevo][xnuevo]==null){
                 eliminarFicha(yanterior,xnuevo);
-                System.out.println("movimiento especial peon");
+
             }   
         }
         atributosMover(ynuevo,xnuevo,yanterior,xanterior);
@@ -1610,18 +1631,19 @@ public class InterfaceJuego extends javax.swing.JFrame {
         y=(int)(bt.getAlignmentY()*10);
         Ficha fichaClickeada=casillerosFichas[y][x];
  
-        if (movimiento.size() < 1 && fichaClickeada != null && fichaClickeada.getColor().equals(colorTurnoJugador) && comprobarVidaReyes() && reemplazarPeon==false) {
+        if (movimiento.size() < 1 && fichaClickeada != null && fichaClickeada.getColor().equals(colorTurnoJugador) && reemplazarPeon==false && jakeMate==false) {
 
             fichaClickeada.getBoton().setBackground(Color.BLACK);
             fichaClickeada.movimientosPosibles(posicionesPosibles, casillerosFichas,YultimoMovido,XultimoMovido);
             pintarMovimientosPosibles();
             movimiento.add(bt);
             
-        }else if (movimiento.size() == 1 && comprobarVidaReyes() && reemplazarPeon==false) {
+        }else if (movimiento.size() == 1 && reemplazarPeon==false && jakeMate==false) {
             movimiento.add(bt);
             
-            
-            if (comprobarMovimientoValido(y, x) && !comprobarSiHayJakeDespuesDeMover(y,x,colorTurnoJugador)) {
+            int xanterior=(int)(movimiento.get(0).getAlignmentX()*10);
+            int yanterior=(int)(movimiento.get(0).getAlignmentY()*10);
+            if (comprobarMovimientoValido(y, x) && !comprobarSiHayJakeDespuesDeMover(y,x,xanterior,yanterior,colorTurnoJugador)) {
                 moverPieza();
                 
                 cambiarTurnoJugador();
@@ -1633,7 +1655,6 @@ public class InterfaceJuego extends javax.swing.JFrame {
                 fichaClickeada.movimientosPosibles(posicionesPosibles, casillerosFichas,YultimoMovido,XultimoMovido);
                 //
             }
-            System.out.println("y es : "+y);
             if(casillerosFichas[y][x] instanceof Peon){
                 if(y==0 || y==7){
                     escogerFicha.setVisible(true);    
@@ -1641,38 +1662,46 @@ public class InterfaceJuego extends javax.swing.JFrame {
                 }
             }
             comprobarSiHayJakeDosColores();
+            if(comprobarHakeMate(colorTurnoJugador)){
+                jakeMate=true;
+                jakeMatePanel.setVisible(true);
+                ganadortxt.setVisible(true);
+                contenedorJake.setVisible(false);
+                String ganador;
+                if(colorTurnoJugador.equals("blanco")){
+                    ganador="gano player2";
+                }else{
+                    ganador="gano player1";
+                }
+                ganadortxt.setText(ganador);
+            }
             movimiento.clear();
             posicionesPosibles.clear();
             pintarBackgroundTablero();
-            casillerosAtacados.clear();
-        }
-        if(!comprobarVidaReyes()){
-                mostrarGanador();
-                btnVolverAJugar.setVisible(true);
+            
         }
     }  
-    public boolean comprobarSiHayJakeDespuesDeMover(int y,int x,String colorAtacado){
-        int xanterior=(int)(movimiento.get(0).getAlignmentX()*10);
-        int yanterior=(int)(movimiento.get(0).getAlignmentY()*10);
+    public boolean comprobarSiHayJakeDespuesDeMover(int ynuevo,int xnuevo,int xanterior,int yanterior,String colorAtacado){
+
         boolean valor;
         Ficha fichaMoviendo=casillerosFichas[yanterior][xanterior];
         Ficha fichaComida;
         
         if(fichaMoviendo instanceof Rey){
-            fichaMoviendo.setPosX(x);
-            fichaMoviendo.setPosY(y);
+            fichaMoviendo.setPosX(xnuevo);
+            fichaMoviendo.setPosY(ynuevo);
         }
         casillerosFichas[yanterior][xanterior]=null;
         
-        if(casillerosFichas[y][x]==null){
-            casillerosFichas[y][x]=fichaMoviendo;
+        if(casillerosFichas[ynuevo][xnuevo]==null){
+            casillerosFichas[ynuevo][xnuevo]=fichaMoviendo;
             valor=comprobarsiHayJake(colorAtacado); 
-            casillerosFichas[y][x]=null;
+            casillerosFichas[ynuevo][xnuevo]=null;
         }else{
-            fichaComida=casillerosFichas[y][x];
-            casillerosFichas[y][x]=fichaMoviendo;
+            fichaComida=casillerosFichas[ynuevo][xnuevo];
+            casillerosFichas[ynuevo][xnuevo]=fichaMoviendo;
             valor=comprobarsiHayJake(colorAtacado); 
-            casillerosFichas[y][x]=fichaComida;
+            casillerosFichas[ynuevo][xnuevo]=fichaComida;
         }
         
         if(fichaMoviendo instanceof Rey){
@@ -1686,10 +1715,8 @@ public class InterfaceJuego extends javax.swing.JFrame {
     public void comprobarSiHayJakeDosColores(){
         if(comprobarsiHayJake("blanco") || comprobarsiHayJake("negro")){
                 contenedorJake.setVisible(true);
-                jake=true;
         }else{
                 contenedorJake.setVisible(false);
-                jake=false;
         }
         
     }
@@ -1697,14 +1724,15 @@ public class InterfaceJuego extends javax.swing.JFrame {
         llenarCasillerosAtacados(colorAtacado);
         
         for(int i=0;i<reyes.length;i++){
-            String movimiento=reyes[i].getPosY()+" "+reyes[i].getPosX();
+            String posRey=reyes[i].getPosY()+" "+reyes[i].getPosX();
             for(int j=0;j<casillerosAtacados.size();j++){
-                if(casillerosAtacados.get(j).equals(movimiento)){
-                    System.out.println("");
+                if(casillerosAtacados.get(j).equals(posRey)){
+                    casillerosAtacados.clear();
                     return true;
                 }    
             }
         }
+        casillerosAtacados.clear();
         return false;
     }
     
@@ -1719,11 +1747,31 @@ public class InterfaceJuego extends javax.swing.JFrame {
         }
     }
     
-    public boolean comprobarVidaReyes(){
-        if(reyes[0].getVive() && reyes[1].getVive())
-            return true;
-        else
-            return false;
+    public boolean comprobarHakeMate(String colorAtacado){
+        
+        String indices[];
+        for(int i=0;i<casillerosFichas.length;i++){
+            for(int j=0;j<casillerosFichas[0].length;j++){
+                if(casillerosFichas[i][j]!=null && casillerosFichas[i][j].getColor().equals(colorAtacado)){
+                    ArrayList<String> movimientosPosibles=new ArrayList<String>();
+                    Ficha fichaActual=casillerosFichas[i][j];
+                    fichaActual.movimientosPosibles(movimientosPosibles, casillerosFichas, YultimoMovido, XultimoMovido);
+                    //probancdo cuantos movimientos son validos para no teneer jaque
+
+                    for(int k=0;k<movimientosPosibles.size();k++){
+                        indices = movimientosPosibles.get(k).split(" ");
+                        int ynuevo=Integer.parseInt(indices[0]);
+                        int xnuevo=Integer.parseInt(indices[1]);
+
+                        if(!comprobarSiHayJakeDespuesDeMover(ynuevo,xnuevo,fichaActual.getPosX(),fichaActual.getPosY(),colorAtacado)){
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+        
     }
     public void mostrarGanador(){
         if(!reyes[0].getVive()){
@@ -1748,7 +1796,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
             turnoJugador=1;
             colorTurnoJugador="blanco";
         }
-            
+
     }        
     
     public void colocarPieza(Ficha fich){
@@ -2012,6 +2060,7 @@ public class InterfaceJuego extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jakeMatePanel;
     private javax.swing.JComboBox<String> opciones;
     private javax.swing.JPanel player1;
     private javax.swing.JPanel player2;
