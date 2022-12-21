@@ -33,35 +33,28 @@ public class Ficha {
         
         if(comprobarRangoIndice(getPosY()+variacionY,getPosX()+variacionX)){
             if(fichas[getPosY()+variacionY][getPosX()+variacionX]==null) {
-                    posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+                posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+                return true;
             } else if(!fichas[getPosY()+variacionY][getPosX()+variacionX].getColor().equals(this.getColor())) {
-                    probarJaque(posicionesPosibles, fichas, variacionY, variacionX);
-                    return false;
+                posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
+                return false;
             } else {
-                    return false;
+                return false;
             }
         }else{
             return false;
         }
-        return true;
-        
     }
     
     public void probarJaque(ArrayList<String> posicionesPosibles,Ficha fichas[][],int variacionY,int variacionX){
+            posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
             if(fichas[getPosY()+variacionY][getPosX()+variacionX] instanceof Rey){//probar que el rey esté en jaque
                     Ficha.ataque=true;
-                    posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
-            }else{
-                    posicionesPosibles.add(""+(getPosY()+variacionY)+" "+(getPosX()+variacionX));
             }
     }
     
     public String getColor() {
         return color;
-    }
-
-    public String getDireccionImagen() {
-        return direccionImagen;
     }
 
     public JButton getBoton() {
@@ -90,7 +83,9 @@ public class Ficha {
     public void setPosX(int posX) {
         this.posX = posX;
     }
-
+    public String getDireccionImagen(){
+        return direccionImagen;
+    }
     public void setBoton(JButton boton) {
         this.boton = boton;
     }
